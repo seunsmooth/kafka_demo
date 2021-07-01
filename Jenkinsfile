@@ -1,31 +1,18 @@
 pipeline {
 
-    agent {
-      docker { image 'purbon/kafka-topology-builder:1.0.0-rc.2' }
-    }
-
+    agent any
+    
    stages {
       stage('verify-replication-factor') {
           steps {
-              sh 'checks/verify-replication-factor.sh ${TopologyFiles} 3'
+              sh 'verify-replication-factor.sh ${TopologyFiles} 3'
           }
       }
       stage('verify-num-of-partitions') {
           steps {
-              sh 'checks/verify-num-of-partitions.sh ${TopologyFiles} 12'
+              sh 'verify-num-of-partitions.sh ${descriptor.yaml} 12'
           }
       }
-   }
-   post {
-     success {
-     withCredentials([string(credentialsId: 'my-github', variable: 'GITHUB_TOKEN')]) {
-        sh './post-hook-success.sh'
-      }
-     }
-     failure {
-        withCredentials([string(credentialsId: 'my-github', variable: 'GITHUB_TOKEN')]) {
-          sh './post-hook-failure.sh'
-        }
-     }
+   
    }
 }
