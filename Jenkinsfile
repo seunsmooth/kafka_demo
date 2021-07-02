@@ -13,6 +13,10 @@ pipeline {
               sh "verify-num-of-partitions.sh ${descriptor.yaml} 12"
           }
       }
-      
+      stage('test env') {
+          steps {
+              sh "echo ${descriptor.yaml} & ls -ltr"
+          }
+      }
    }
 }
