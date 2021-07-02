@@ -13,6 +13,6 @@ pipeline {
               sh "verify-num-of-partitions.sh ${descriptor.yaml} 12"
           }
       }
-   
+      
    }
 }
