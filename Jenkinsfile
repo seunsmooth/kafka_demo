@@ -1,11 +1,11 @@
 pipeline {
 
     agent any
-    
+
    stages {
       stage('verify-replication-factor') {
           steps {
-              sh 'verify-replication-factor.sh ${TopologyFiles} 3'
+              sh 'verify-replication-factor.sh ${descriptor.yaml} 3'
           }
       }
       stage('verify-num-of-partitions') {
