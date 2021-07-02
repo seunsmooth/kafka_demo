@@ -5,12 +5,12 @@ pipeline {
    stages {
       stage('verify-replication-factor') {
           steps {
-              sh "verify-replication-factor.sh ${descriptor.yaml} 3"
+              sh "verify-replication-factor.sh ${env.WORKSPACE}/descriptor.yaml 3"
           }
       }
       stage('verify-num-of-partitions') {
           steps {
-              sh "verify-num-of-partitions.sh ${descriptor.yaml} 12"
+              sh "verify-num-of-partitions.sh ${env.WORKSPACE}/descriptor.yaml 12"
           }
       }
       stage('test env') {
