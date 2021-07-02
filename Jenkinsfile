@@ -10,7 +10,7 @@ pipeline {
       }
       stage('verify-num-of-partitions') {
           steps {
-              sh 'verify-num-of-partitions.sh ${descriptor.yaml} 12'
+              sh "verify-num-of-partitions.sh ${descriptor.yaml} 12"
           }
       }
    
