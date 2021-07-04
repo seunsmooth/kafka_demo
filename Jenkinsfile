@@ -3,6 +3,13 @@ pipeline {
     agent any
 
    stages {
+
+    stages {
+      stage('CleanWorkspace') {
+            steps {
+                cleanWs()
+            }
+            
       stage('verify-replication-factor') {
           steps {
               sh "${env.WORKSPACE}/verify-replication-factor.sh ${env.WORKSPACE}/descriptor.yaml 3"
