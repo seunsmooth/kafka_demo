@@ -2,19 +2,10 @@
   context: "sky"
   source: "gcp"
   projects:
-    - name: "AI"
+    - name: "ai"
       topics:
-        - name: "topology"
-          config:
-            replication.factor: "1"
-            num.partitions: "1"
-        - dataType: "avro"
-          name: "bar"
-          config:
-            replication.factor: "1"
-            num.partitions: "1"
-        - dataType: "csv"
-          name: "seun"
+        - name: "top"
           config:
             replication.factor: "3"
             num.partitions: "10"
+        
