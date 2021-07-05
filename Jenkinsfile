@@ -6,6 +6,7 @@ pipeline {
             steps {
                 cleanWs()
             }
+      }
             
       stage('verify-replication-factor') {
           steps {
