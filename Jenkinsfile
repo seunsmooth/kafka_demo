@@ -3,15 +3,15 @@ pipeline {
     agent any
 
    stages {
-      stage('verify-replication-factor') {
+      stage('Download Juliops jar file') {
           steps {
-              sh "${env.WORKSPACE}/verify-replication-factor.sh ${env.WORKSPACE}/descriptor.yaml 3"
+              sh "curl -O https://github.com/kafka-ops/julie/releases/download/v2.1.2/FAT.jar.zip && unzip FAT.jar.zip ."
           }
       }
       
-      stage('verify-num-of-partitions') {
+      stage('Create topics') {
           steps {
-              sh "${env.WORKSPACE}/verify-num-of-partitions.sh ${env.WORKSPACE}/descriptor.yaml 10"
+              sh "java -jar --broker 82.23.130.14:9092 --clientConfig ${WORKSPACE}/kafka_config.conf --topology ${WORKSPACE}/descriptor.yaml"
           }
       }
       
