@@ -3,9 +3,16 @@ pipeline {
     agent any
 
    stages {
+
+      stage('CleanWorkspace') {
+            steps {
+                cleanWs()
+            }
+      }
+
       stage('Download Juliops jar file') {
           steps {
-              sh "wget https://github.com/kafka-ops/julie/releases/download/v2.1.2/FAT.jar.zip && unzip FAT.jar.zip -d ${WORKSPACE}"
+              sh "cd ${WORKSPACE} && wget https://github.com/kafka-ops/julie/releases/download/v2.1.2/FAT.jar.zip && unzip FAT.jar.zip -d ${WORKSPACE}"
           }
       }
       
