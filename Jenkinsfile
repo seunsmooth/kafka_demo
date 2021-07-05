@@ -21,10 +21,9 @@ pipeline {
               sh "${env.WORKSPACE}/verify-num-of-partitions.sh ${env.WORKSPACE}/descriptor.yaml 10"
           }
       }
-   
-=======            
+          
       stage('Download Juliosp file') {
->>>>>>> develop:Jenkinsfileverify
+
           steps {
               sh "cd ${WORKSPACE} && wget https://github.com/kafka-ops/julie/releases/download/v2.1.2/FAT.jar.zip && unzip FAT.jar.zip -d ${WORKSPACE}"
           }
