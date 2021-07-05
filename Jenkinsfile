@@ -23,7 +23,7 @@ pipeline {
       }
       stage('Create topics') {
           steps {
-              sh "java -jar --broker localhost:9092 --clientConfig ${WORKSPACE}/kafka_config.conf --topology ${WORKSPACE}/descriptor.yaml"
+              sh "java -jar --brokers localhost:9092 --clientConfig ${WORKSPACE}/kafka_config.conf --topology ${WORKSPACE}/descriptor.yaml"
           }
       }
       
